@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Northstar DevOps Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --font-mono: 'Share Tech Mono', monospace;
+        /* Day Mode Default */
+        --bg-primary: #d0d0d0;
+        --bg-secondary: #e0e0e0;
+        --text-primary: #1b0030;
+        --text-secondary: #2d004d;
+        --border-color: #000000;
+        --accent-primary: #00ff9f; /* Neon Green */
+        --accent-secondary: #0ef0f5; /* Neon Blue */
+        --status-error: #ef4444;
+        --status-warning: #f59e0b;
+        --status-success: #22c55e;
+      }
+
+      [data-theme='night'] {
+        --bg-primary: #240024;
+        --bg-secondary: #320032;
+        --text-primary: #e0e0e0; /* Adjusted for contrast */
+        --text-secondary: #d0d0d0;
+        --border-color: #ff00ff; /* Magenta border for night */
+        --accent-primary: #ff00ff; /* Neon Magenta */
+        --accent-secondary: #00e6e6; /* Teal */
+      }
+
+      body {
+        font-family: var(--font-mono);
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        transition: background-color 0.3s, color 0.3s;
+      }
+      
+      /* Custom Scrollbar for cyberpunk feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-primary);
+        border-left: 1px solid var(--border-color);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent-secondary);
+        border: 1px solid var(--border-color);
+      }
+      ::-webkit-scrollbar-corner {
+        background: var(--bg-primary);
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: ['class', '[data-theme="night"]'],
+        theme: {
+          extend: {
+            fontFamily: {
+              mono: ['Share Tech Mono', 'monospace'],
+            },
+            colors: {
+              background: 'var(--bg-primary)',
+              surface: 'var(--bg-secondary)',
+              primary: 'var(--text-primary)',
+              secondary: 'var(--text-secondary)',
+              border: 'var(--border-color)',
+              accent: {
+                DEFAULT: 'var(--accent-primary)',
+                glow: 'var(--accent-secondary)',
+              },
+              status: {
+                error: 'var(--status-error)',
+                warning: 'var(--status-warning)',
+                success: 'var(--status-success)',
+              }
+            },
+            keyframes: {
+               slideInRight: {
+                 '0%': { transform: 'translateX(100%)' },
+                 '100%': { transform: 'translateX(0)' },
+               },
+               slideIn: {
+                 '0%': { transform: 'translateY(20px)', opacity: 0 },
+                 '100%': { transform: 'translateY(0)', opacity: 1 },
+               },
+               fadeIn: {
+                 '0%': { opacity: 0 },
+                 '100%': { opacity: 1 },
+               }
+            },
+            animation: {
+              'slide-in-right': 'slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'slide-in': 'slideIn 0.3s ease-out forwards',
+              'fade-in': 'fadeIn 0.3s ease-out forwards',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "recharts": "https://aistudiocdn.com/recharts@^3.4.1",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
